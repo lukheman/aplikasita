@@ -50,10 +50,10 @@ class FeaturesRelationManager extends RelationManager
                     ->label('Harga')
                     ->money('IDR', true)
                     ->sortable(),
-                Tables\Columns\TextColumn::make('description')
-                    ->label('Deskripsi')
-                    ->limit(50)
-                    ->tooltip(fn ($record) => $record->description),
+                // Tables\Columns\TextColumn::make('description')
+                //     ->label('Deskripsi')
+                //     ->limit(50)
+                //     ->tooltip(fn ($record) => $record->description),
                 Tables\Columns\BooleanColumn::make('pivot.is_completed')
                     ->label('Selesai')
                     ->trueIcon('heroicon-o-check-circle')
@@ -101,16 +101,12 @@ class FeaturesRelationManager extends RelationManager
                             ->label('Fitur')
                             ->options(
                                 Feature::whereDoesntHave('projects', fn (Builder $query) => $query->where('projects.id', $livewire->ownerRecord->id))
-                                    ->pluck('name', 'id')
+                                    ->selectRaw('id, CONCAT(name, " - Rp ", FORMAT(price, 2, "id_ID")) AS name_price')
+                                    ->pluck('name_price', 'id')
                             )
                             ->searchable()
                     )
-                    ->form([
-                        Forms\Components\Toggle::make('is_completed')
-                            ->label('Selesai')
-                            ->default(false),
-                    ])
-                    ->after(function ($livewire) {
+                    ->after(function ($livewire, $data) {
                         $livewire->ownerRecord->update([
                             'price' => ($livewire->ownerRecord->base_price + $livewire->ownerRecord->features()->sum('price')) ?: 0,
                         ]);

@@ -11,6 +11,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Tables\Enums\ActionsPosition;
 
 class ProjectResource extends Resource
 {
@@ -41,8 +42,7 @@ class ProjectResource extends Resource
                     ->numeric()
                     ->prefix('Rp')
                     ->minValue(0)
-                    ->default(0)
-                    ->formatStateUsing(fn ($state) => number_format($state, 2, ',', '.')),
+                    ->default(0),
                 Forms\Components\TextInput::make('price')
                     ->label('Harga Total')
                     ->prefix('Rp')
@@ -114,7 +114,7 @@ class ProjectResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
-            ])
+            ], position: ActionsPosition::BeforeColumns)
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),

@@ -56,14 +56,14 @@ class FeatureResource extends Resource
                     ->label('Harga')
                     ->money('IDR', true)
                     ->sortable(),
-                Tables\Columns\TextColumn::make('description')
-                    ->label('Deskripsi')
-                    ->limit(50)
-                    ->tooltip(fn ($record) => $record->description),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->label('Dibuat')
-                    ->dateTime('d M Y H:i')
-                    ->sortable(),
+                // Tables\Columns\TextColumn::make('description')
+                //     ->label('Deskripsi')
+                //     ->limit(50)
+                //     ->tooltip(fn ($record) => $record->description),
+                // Tables\Columns\TextColumn::make('created_at')
+                //     ->label('Dibuat')
+                //     ->dateTime('d M Y H:i')
+                //     ->sortable(),
             ])
             ->filters([
                 Tables\Filters\Filter::make('price')
@@ -82,6 +82,7 @@ class FeatureResource extends Resource
                     }),
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
