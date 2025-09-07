@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Enums\ProjectStatus;
+use App\Enums\PaymentStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
@@ -10,8 +12,8 @@ class Project extends Model
     protected $guarded = [];
 
     protected $casts = [
-        'status' => \App\Enums\ProjectStatus::class,
-        'payment_status' => \App\Enums\PaymentStatus::class,
+        'status' => ProjectStatus::class,
+        'payment_status' => PaymentStatus::class,
     ];
 
     public function customer() {
