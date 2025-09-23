@@ -1,7 +1,7 @@
 <div>
     <section class="hero">
         <div class="container">
-            <h1 class="display-4 fw-bold">Solusi Aplikasi untuk Bisnis Anda</h1>
+            <h1 class="display-4 fw-bold">Solusi Aplikasi untuk kebutuhan Anda</h1>
             <p class="lead mb-4">Solusi aplikasi custom dan siap pakai sesuai kebutuhan Anda</p>
             <a href="#contact" class="btn btn-light btn-lg px-4">Konsultasi Gratis</a>
         </div>
@@ -13,7 +13,7 @@
             <h2 class="fw-bold mb-4">Tentang Kami</h2>
             <p class="text-muted mb-5">
                 Aplikasita adalah tim profesional yang berfokus pada pembuatan aplikasi berkualitas tinggi
-                untuk mendukung perkembangan bisnis Anda.
+                untuk mendukung perkembangan Anda.
             </p>
         </div>
     </section>
@@ -70,7 +70,7 @@
 <section id="contact" class="py-5 py-md-8 bg-light position-relative">
     <div class="container text-center">
         <h2 class="fw-bold mb-4">Kontak Kami</h2>
-        <p class="text-muted mb-5">Hubungi kami untuk konsultasi dan penawaran terbaik untuk bisnis Anda.</p>
+        <p class="text-muted mb-5">Hubungi kami untuk konsultasi dan penawaran terbaik untuk kebutuhan Anda.</p>
 
         <!-- Ikon Kontak Minimalis -->
         <div class="d-flex justify-content-center gap-4 flex-wrap">
