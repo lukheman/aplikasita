@@ -20,5 +20,5 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php
 
-    AddType application/x-httpd-php82 .php
+    AddType application/x-httpd-php84 .php
 </IfModule>
