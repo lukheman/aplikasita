@@ -150,12 +150,12 @@ class FeaturesRelationManager extends RelationManager
                             'price' => ($livewire->ownerRecord->base_price + $livewire->ownerRecord->features()->sum('price')) ?: 0,
                         ]);
                     }),
-                DeleteAction::make()
-                    ->after(function ($livewire) {
-                        $livewire->ownerRecord->update([
-                            'price' => ($livewire->ownerRecord->base_price + $livewire->ownerRecord->features()->sum('price')) ?: 0,
-                        ]);
-                    }),
+                // DeleteAction::make()
+                //     ->after(function ($livewire) {
+                //         $livewire->ownerRecord->update([
+                //             'price' => ($livewire->ownerRecord->base_price + $livewire->ownerRecord->features()->sum('price')) ?: 0,
+                //         ]);
+                //     }),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

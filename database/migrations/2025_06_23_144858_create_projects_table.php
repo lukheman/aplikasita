@@ -20,8 +20,8 @@ return new class extends Migration
             $table->decimal('base_price', 12, 2)->default(0);
             $table->decimal('price', 12, 2)->nullable();
             $table->enum('status', ProjectStatus::values())->default(ProjectStatus::Pending);
-            $table->enum('payment_status', PaymentStatus::values())->default(PaymentStatus::Unpaid);
             $table->decimal('total_paid', 12, 2)->default(0);
+            $table->uuid('uuid')->unique();
             $table->timestamps();
         });
     }

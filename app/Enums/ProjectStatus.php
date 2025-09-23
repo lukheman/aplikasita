@@ -18,7 +18,7 @@ enum ProjectStatus: string implements HasLabel
 
     public function getColor() {
         return match($this) {
-            self::Pending => 'gray',
+            self::Pending => 'warning',
             self::Progress => 'warning',
             self::Completed => 'success',
             self::Canceled => 'danger',

@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Projects;
 
+use Filament\Actions\Action;
 use Filament\Schemas\Schema;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -18,14 +19,9 @@ use App\Filament\Resources\Projects\RelationManagers\FeaturesRelationManager;
 use App\Filament\Resources\Projects\Pages\ListProjects;
 use App\Filament\Resources\Projects\Pages\CreateProject;
 use App\Filament\Resources\Projects\Pages\EditProject;
-use App\Filament\Resources\ProjectResource\Pages;
-use App\Filament\Resources\ProjectResource\RelationManagers;
 use App\Models\Project;
-use Filament\Forms;
 use Filament\Resources\Resource;
-use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
 
 class ProjectResource extends Resource
 {
@@ -56,7 +52,7 @@ class ProjectResource extends Resource
                     ->numeric()
                     ->prefix('Rp')
                     ->minValue(0)
-                    ->default(0),
+                    ->default(1000000),
                 TextInput::make('price')
                     ->label('Harga Total')
                     ->prefix('Rp')
@@ -69,11 +65,6 @@ class ProjectResource extends Resource
                     ->label('Status')
                     ->options(ProjectStatus::options())
                     ->default(ProjectStatus::Pending)
-                    ->required(),
-                Select::make('payment_status')
-                    ->label('Status Pembayaran')
-                    ->options(PaymentStatus::options())
-                    ->default(PaymentStatus::Unpaid)
                     ->required(),
                 TextInput::make('total_paid')
                     ->label('Total Dibayar')
@@ -128,6 +119,13 @@ class ProjectResource extends Resource
             ->recordActions([
                 EditAction::make(),
                 DeleteAction::make(),
+                Action::make('Cetak Nota')
+                    ->label('Cetak Nota')
+                ->url(fn($record): string => route('nota', ['project' => $record])),
+                Action::make('Progres')
+                    ->label('Progres')
+                ->url(fn($record): string => route('progres-projek', ['project' => $record]))
+
             ], position: RecordActionsPosition::BeforeColumns)
             ->toolbarActions([
                 BulkActionGroup::make([
