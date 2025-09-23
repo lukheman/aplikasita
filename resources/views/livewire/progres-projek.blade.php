@@ -23,6 +23,36 @@
                 </div>
             </div>
 
+            {{-- Ringkasan Harga --}}
+            <div class="table-responsive mb-3">
+                <table class="table table-sm table-bordered">
+                    <tr>
+                        <th>Total Harga</th>
+                        <td class="text-end">Rp {{ number_format($project->price, 0, ',', '.') }}</td>
+                    </tr>
+                    <tr>
+                        <th>Total Dibayar</th>
+                        <td class="text-end">Rp {{ number_format($project->total_paid, 0, ',', '.') }}</td>
+                    </tr>
+                    <tr>
+                        <th>Status Pembayaran</th>
+                        <td class="text-end">
+                            <span class="badge bg-{{ $project->payment_status->getColor() }}">
+                                {{ ucfirst($project->payment_status->value) }}
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Status Proyek</th>
+                        <td class="text-end">
+                            <span class="badge bg-{{ $project->status->getColor() }}">
+                                {{ ucfirst($project->status->value) }}
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
             {{-- Daftar fitur --}}
             @if($project->features->count())
                 <h3 class="h6 fw-semibold mb-2">Fitur yang Dipesan</h3>
@@ -61,35 +91,6 @@
                 </div>
             @endif
 
-            {{-- Ringkasan Harga --}}
-            <div class="table-responsive mb-3">
-                <table class="table table-sm table-bordered">
-                    <tr>
-                        <th>Total Harga</th>
-                        <td class="text-end">Rp {{ number_format($project->price, 0, ',', '.') }}</td>
-                    </tr>
-                    <tr>
-                        <th>Total Dibayar</th>
-                        <td class="text-end">Rp {{ number_format($project->total_paid, 0, ',', '.') }}</td>
-                    </tr>
-                    <tr>
-                        <th>Status Pembayaran</th>
-                        <td class="text-end">
-                            <span class="badge bg-{{ $project->payment_status->getColor() }}">
-                                {{ ucfirst($project->payment_status->value) }}
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Status Proyek</th>
-                        <td class="text-end">
-                            <span class="badge bg-{{ $project->status->getColor() }}">
-                                {{ ucfirst($project->status->value) }}
-                            </span>
-                        </td>
-                    </tr>
-                </table>
-            </div>
 
             {{-- Riwayat Pembayaran --}}
             @if($project->payments->count())
