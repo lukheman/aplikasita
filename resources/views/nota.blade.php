@@ -149,6 +149,10 @@
             background-color: #f59e0b; /* kuning */
             color: #1e293b;
         }
+
+        .text-red {
+            color: #dc2626; /* merah */
+        }
     </style>
 </head>
 <body>
@@ -258,7 +262,7 @@
         </div>
 
         <div class="footer">
-            <p>Catatan:</p>
+            <p class="text-red">Catatan:</p>
             <p>
 Penambahan fitur sederhana sudah termasuk dalam biaya revisi.
 Namun, untuk penambahan fitur yang bersifat kompleks, akan dikenakan biaya tambahan yang disesuaikan dengan tingkat kesulitan fitur yang diminta.
